@@ -4,7 +4,7 @@ from matplotlib.animation import FuncAnimation
 from rtlsdr import RtlSdr
 
 #Martin estuvo aqui
-
+#hola
 
 
 # Frecuencia central y ancho de banda de la señal de interés (en Hz)
