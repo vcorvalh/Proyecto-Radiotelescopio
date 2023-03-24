@@ -6,7 +6,7 @@ from rtlsdr import RtlSdr
 # Frecuencia central y ancho de banda de la señal de interés (en Hz)
 center_freq = 0   # Frecuencia del LNB
 bandwidth = 5000000   # Ancho de banda de 5 MHz
-
+# Estuve aquí
 # Configuración del dongle
 sdr = RtlSdr()
 sdr.sample_rate = 2.4e6   # Frecuencia de muestreo (en Hz)
