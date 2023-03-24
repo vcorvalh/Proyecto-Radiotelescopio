@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from rtlsdr import RtlSdr
 
+# brono estuvo aquí
+
 # Frecuencia central y ancho de banda de la señal de interés (en Hz)
 center_freq = 0   # Frecuencia del LNB
 bandwidth = 5000000   # Ancho de banda de 5 MHz
@@ -47,3 +49,6 @@ plt.show()
 sdr.close()
 
 #la tina estuvo aquí
+=======
+# Seba estuvo allá
+# Vicho estuvo en algún lado
