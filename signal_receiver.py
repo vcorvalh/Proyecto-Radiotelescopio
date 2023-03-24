@@ -49,9 +49,9 @@ plt.show()
 sdr.close()
 
 #la tina estuvo aquí
-
 # Seba estuvo allá
 # Vicho estuvo en algún lado
 #mapache estuvo aqui
 # CMB DETECTED...
 # Hola
+#potito
