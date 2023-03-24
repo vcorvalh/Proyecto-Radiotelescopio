@@ -47,3 +47,5 @@ plt.show()
 
 # Cierre del dispositivo SDR
 sdr.close()
+
+# Seba estuvo allá
