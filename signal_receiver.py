@@ -49,3 +49,4 @@ plt.show()
 sdr.close()
 
 # Seba estuvo allá
+# Vicho estuvo en algún lado
