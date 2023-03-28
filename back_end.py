@@ -58,12 +58,12 @@ class Info:
 
     def __init__ (self):
 
-        self.amount_read_samples = 256*1024
-        self.amount_sample_rate = 2.4e6
-        self.bandwidth = 5000000
-        self.center_freq = 0
-        self.x_lim = [0, 1]
-        self.y_lim = [-20, 10]
+        self.amount_read_samples = 10*256*1024
+        self.amount_sample_rate = 3e6
+        self.bandwidth = 5e5
+        self.center_freq = 1e6
+        self.x_lim = [1e6 - 1e3, 1e6 + 1e3]
+        self.y_lim = [-20, 70]
         self.data_queue = Queue()
 
     def add_data_2_queue (self, data):

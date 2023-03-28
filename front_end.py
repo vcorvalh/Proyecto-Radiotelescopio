@@ -48,16 +48,16 @@ class RealTimePlot(QMainWindow):
         self.ax.clear()
         self.ax.plot(x, y)
         #self.ax.set_xlim(self.plot_info.x_lim)
-        self.ax.set_ylim(self.plot_info.y_lim)
-        self.ax.autoscale_view()
+        self.ax.set_ylim(self.info.y_lim)
+        #self.ax.autoscale_view()
         self.canvas.draw()
 
     def timerEvent(self, event):
-        while not self.info.data_queue.empty():
-            data = self.info_data_queue.get()
+        if not self.info.data_queue.empty():
+            data = self.info.data_queue.get()
             x = data[0]
             y = data[1]
-            self.update_plot.plot(x, y)
+            self.update_plot(x, y)
 
 
 
