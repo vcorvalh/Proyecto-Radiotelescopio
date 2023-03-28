@@ -1,45 +1,76 @@
+from queue import Queue
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+from PyQt5.QtCore import QThread
 from rtlsdr import RtlSdr
 
 
 
-class DownloadData:
+class DownloadData(QThread):
 
-    def __init__(self):
+    def __init__(self, info):
+        super().__init__()
+
+        self.info = info
+        self.sdr = None
+        self.running = False
+
+    
+    def run(self):
+        self.running = True
+        self.init_dongle()
+        while self.running:
+            data = self.get_data()
+            self.info.add_data_2_queue(data)
+        self.close_dongle()
+
+    
+    def stop(self):
+        self.running = False
+
+
+
+    def get_data(self):
+        samples = self.sdr.read_samples(self.info.amount_read_samples)  # Número de muestras
+        fft_data = np.fft.fft(samples)
+        freqs = np.fft.fftfreq(len(samples), 1/self.sdr.sample_rate)
+        power_spectrum = 20*np.log10(np.abs(fft_data))
+
+        return [freqs, power_spectrum]
+
+
+    def init_dongle (self):
+        self.sdr = RtlSdr()
+        self.sdr.sample_rate = self.info.amount_sample_rate
+        self.sdr.center_freq = self.info.center_freq
+        self.sdr.bandwidth = self.info.bandwidth
+
+
+    def close_dongle(self):
+        self.sdr.close()
+
+
+
+
+
+class Info:
+
+    def __init__ (self):
 
         self.amount_read_samples = 256*1024
         self.amount_sample_rate = 2.4e6
         self.bandwidth = 5000000
         self.center_freq = 0
+        self.x_lim = [0, 1]
+        self.y_lim = [-20, 10]
+        self.data_queue = Queue()
 
+    def add_data_2_queue (self, data):
+        self.data_queue.put(data)
 
-    def get_data(self):
-        self.init_dongle()
-
-        samples = self.sdr.read_samples(self.amount_read_samples)  # Número de muestras
-        fft_data = np.fft.fft(samples)
-        freqs = np.fft.fftfreq(len(samples), 1/self.sdr.sample_rate)
-        power_spectrum = 20*np.log10(np.abs(fft_data))
-
-        self.close_dongle()
-
-        return freqs, power_spectrum
-
-
-    
-
-    
-    def init_dongle (self):
-        self.sdr = RtlSdr()
-        self.sdr.sample_rate = self.amount_sample_rate
-        self.sdr.center_freq = self.center_freq
-        self.sdr.bandwidth = self.bandwidth
-
-
-    def close_dongle(self):
-        self.sdr.close()
+    def update_plot_info (self):
+        pass
 
 
 
