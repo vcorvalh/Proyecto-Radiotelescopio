@@ -3,7 +3,11 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from rtlsdr import RtlSdr
 
+
 # brono estuvo aquí
+#Martin estuvo aqui
+#hola
+
 
 # Frecuencia central y ancho de banda de la señal de interés (en Hz)
 center_freq = 0   # Frecuencia del LNB
