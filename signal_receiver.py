@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from rtlsdr import RtlSdr
 
+
+# brono estuvo aquí
 #Martin estuvo aqui
 #hola
 
@@ -49,3 +51,11 @@ plt.show()
 
 # Cierre del dispositivo SDR
 sdr.close()
+
+#la tina estuvo aquí
+# Seba estuvo allá
+# Vicho estuvo en algún lado
+#mapache estuvo aqui
+# CMB DETECTED...
+# Hola
+#potito
